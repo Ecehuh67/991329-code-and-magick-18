@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Кирилл Тертунов](https://up.htmlacademy.ru/javascript/18/user/991329).
-* Наставник: `Неизвестно`.
+* Наставник: [Олег Зубов](https://up.htmlacademy.ru/adaptive/17/user/42701).
 
 ---
 
