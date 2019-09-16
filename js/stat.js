@@ -35,10 +35,11 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
 
-  for (var i = 0; i < times.length; i++) {
-    var numberOfWinner = i;
-    console.log(numberOfWinner);
-    if (Math.round(times[i]) === getMaxElement(times)) break;
+  for (var k = 0; k < times.length; k++) {
+    var numberOfWinner = k;
+    if (Math.round(times[k]) === getMaxElement(times)) {
+      break;
+    }
   }
 
   if (names[numberOfWinner] === 'Вы') {
