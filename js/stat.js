@@ -13,11 +13,13 @@ var COLUMN_WIDTH = 40;
 var BAR_HEIGHT = 150;
 var SPACE_BETWEEN = 50;
 
+// Отрисовка всплывающего окна с тенью
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+// Находим масксимальное значение очков среди игроков
 var getMaxElement = function (score) {
   var maxElement = score[0];
   for (var i = 0; i < score.length; i++) {
@@ -35,6 +37,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
 
+  // Находим имя игрока с наибольшим количеством очков
   for (var k = 0; k < times.length; k++) {
     var numberOfWinner = k;
     if (Math.round(times[k]) === getMaxElement(times)) {
@@ -42,6 +45,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
   }
 
+  // Проверка кто выиграл и вывод сообщения
   if (names[numberOfWinner] === 'Вы') {
     ctx.fillText('Ура вы победили!', MESSAGE_X, MESSAGE_Y);
   } else {
@@ -60,6 +64,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = '#000';
     ctx.fillText(names[i], columnX, columnY);
 
+    // Задаем цвет столбцов и рисуем их
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
@@ -67,6 +72,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
     ctx.fillRect(columnX, columnY - FONT - GAP - columnHeight, COLUMN_WIDTH, columnHeight);
 
+    // Указываем счет игрока сверху столбца
     ctx.fillStyle = '#000';
     ctx.fillText(Math.round(times[i]), columnX, columnY - FONT - GAP - columnHeight - GAP);
   }
