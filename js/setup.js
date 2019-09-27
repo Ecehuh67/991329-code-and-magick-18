@@ -125,21 +125,29 @@ setupUserName.addEventListener('keydown', function (evt) {
 // Change color of wizard's coat for click
 var setupWizardCoat = document.querySelector('.setup-wizard').querySelector('.wizard-coat');
 
+// Create function for generating random color
+var randomColor = function (data) {
+  return data[getRandomData(data)];
+};
+
 setupWizardCoat.addEventListener('click', function () {
-  setupWizardCoat.style.fill = '' + COAT_COLOR[getRandomData(COAT_COLOR)];
+  setupWizardCoat.style.fill = randomColor(COAT_COLOR);
 });
 
 // Change color of wizard's eyes for click
 var setupWizardEyes = document.querySelector('.setup-wizard').querySelector('.wizard-eyes');
 
 setupWizardEyes.addEventListener('click', function () {
-  setupWizardEyes.style.fill = '' + EYES_COLOR[getRandomData(EYES_COLOR)];
+  setupWizardEyes.style.fill = randomColor(EYES_COLOR);
 });
 
 // Change color of wizard's fireball for click
 var setupWizardFireball = document.querySelector('.setup-fireball-wrap');
 
 setupWizardFireball.addEventListener('click', function () {
-  setupWizardFireball.style.background = '' + FIREBALL_COLOR[getRandomData(FIREBALL_COLOR)];
-  setupWizardFireball.querySelector('input').setAttribute('value', FIREBALL_COLOR[getRandomData(FIREBALL_COLOR)]);
+  var fireballColor = randomColor(FIREBALL_COLOR);
+  setupWizardFireball.style.background = fireballColor;
+
+  // Pass color to hidden input for sending to server
+  setupWizardFireball.querySelector('input').setAttribute('value', fireballColor);
 });
