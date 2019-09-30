@@ -1,6 +1,6 @@
 // File stat.js
 'use strict';
-(function() {
+(function () {
 
   var CLOUD_WIDTH = 420;
   var CLOUD_HEIGHT = 270;
