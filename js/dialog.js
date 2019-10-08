@@ -6,7 +6,7 @@
   userDialog.classList.remove('hidden');
 
   // Показываем нижнию панель с рандомными магами
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  // userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
   // Find objects for opening popup
   var setup = document.querySelector('.setup');
@@ -118,4 +118,32 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
+
+  // A handler for showing an error
+  var errorHandler = function (errorMessage) {
+
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+
+  };
+
+  // Put a handler on the form for sending data to the server
+  var form = userDialog.querySelector('.setup-wizard-form');
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      userDialog.classList.add('hidden');
+    }, errorHandler);
+    evt.preventDefault();
+  });
+
+  window.dialog = {
+    userDialog: userDialog
+  };
 })();
