@@ -27,9 +27,9 @@
   ]; // Цвет файрбола
 
   var wizard = {
-    onEyesChange: function (color) {},
-    onCoatChange: function (color) {}
-  }
+    onEyesChange: function () {},
+    onCoatChange: function () {}
+  };
 
   // Create function for generating random color
   var randomColor = function (data) {
@@ -46,24 +46,24 @@
 
   setupWizardCoat.addEventListener('click', function () {
     var newColor = randomColor(COAT_COLOR);
-    this.style.fill = newColor;
+    setupWizardCoat.style.fill = newColor;
     wizard.onCoatChange(newColor);
   });
 
   setupWizardEyes.addEventListener('click', function () {
-    var  newColor = randomColor(EYES_COLOR);
-    this.style.fill = newColor;
+    var newColor = randomColor(EYES_COLOR);
+    setupWizardEyes.style.fill = newColor;
     wizard.onEyesChange(newColor);
   });
 
   setupWizardFireball.addEventListener('click', function () {
     var newColor = randomColor(FIREBALL_COLOR);
-    this.style.background = newColor;
+    setupWizardFireball.style.background = newColor;
 
     // Pass color to hidden input for sending to server
     setupWizardFireball.querySelector('input').setAttribute('value', newColor);
   });
 
-  return window.wizard = wizard;
+  window.wizard = wizard;
 
 }());
